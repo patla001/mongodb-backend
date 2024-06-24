@@ -122,7 +122,7 @@ app.post("/login", (request, response) => {
 	})
 	// catch error if email does not exist
 	.catch((e) => {
-		respnse.status(404).send({
+		response.status(404).send({
 			message: "Email not found",
 			e,
 		});

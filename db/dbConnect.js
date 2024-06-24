@@ -7,12 +7,12 @@ async function dbConnect() {
 mongoose
 	.connect(
 		process.env.DB_URL,
-	{
-		// these are options to ensure that the connection is done properly
-		userNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true,
-	}
+	// {
+	// 	// these are options to ensure that the connection is done properly
+	// 	userNewUrlParser: true,
+	// 	useUnifiedTopology: true,
+	// 	useCreateIndex: true,
+	// }
 	)
 	.then(() => {
 		console.log("Successfully connected to MongoDB Atlas!");
