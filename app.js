@@ -50,21 +50,30 @@ app.post("/register", (request, response) => {
 				password: hashedPassword,
 			});
 			// save the new user
-			user.save()
-			// return success if the new user is added to the database successfully
-			.then((result) => {
-				response.status(201).send({
-					message: "User Created Successfully",
-					result,
+			user
+				.save()
+				// return success if the new user is added to the database successfully
+				.then((result) => {
+					response.status(201).send({
+						message: "User Created Successfully",
+						result,
+					});
+				})
+				// catch error if the new user was not added successfully to the database
+				.catch((error) => {
+					response.status(500).send({
+						message: "Error creating user",
+						error,
+					});
 				});
-		})
-		// catch error if the password hash is not successful
-		.catch((e) => {
-			response.status(500).send({
-				message: "Password was not hashed successfully",
-				e,
-			});
-	});
+				})
+				// catch error if the password hash is not successful
+				.catch((e) => {
+					response.status(500).send({
+						message: "Password was not hashed successfully",
+						error,
+				});
+		});
 });
 
 
@@ -117,8 +126,8 @@ app.post("/login", (request, response) => {
 			message: "Email not found",
 			e,
 		});
-	})
-})
+	});
+});
 
 
 // free endpoint
